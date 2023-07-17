@@ -4,8 +4,13 @@ Con un form passare come parametri GET name, mail e age e verificare (cercando i
 <?php
 // create variables from GET method
 $name = $_GET[trim('name')] ?? '';
-$email = $_GET[trim('email')] ?? '';
+$email = $_GET[trim('email')] ?? false;
 $age = $_GET[trim('age')] ?? '';
+
+// Create verification flags
+$name_flag = $name > 3;
+$email_flag = str_contains($email, '@')  && str_contains($email, '.');
+$age_flag = ctype_digit($age);
 
 ?>
 
@@ -23,7 +28,7 @@ $age = $_GET[trim('age')] ?? '';
 
     <!-- CSS -->
     <link rel="stylesheet" href="./css/style.css" type="text/css">
-    <title>PHP - Snack 1</title>
+    <title>PHP - Snack 2</title>
 </head>
 
 <body>
@@ -41,7 +46,7 @@ $age = $_GET[trim('age')] ?? '';
                         <!-- Input Name -->
                         <div class="mb-5">
                             <label for="name" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Inserisci il tuo nome">
+                            <input type="text" minlength="3" class="form-control" id="name" name="name" placeholder="Inserisci il tuo nome">
                             <div class="form-text">Il nome deve essere più lungo di 3 caratteri</div>
                         </div>
 
@@ -55,7 +60,7 @@ $age = $_GET[trim('age')] ?? '';
                         <!-- Input Age -->
                         <div class="mb-5">
                             <label for="age" class="form-label">Età</label>
-                            <input type="number" class="form-control" id="age" name="age" placeholder="Inserisci la tua età">
+                            <input type="number" class="form-control" id="age" min="0" name="age" placeholder="Inserisci la tua età">
                             <div class="form-text">Età deve essere un numero</div>
                         </div>
                         <button type="submit" class="btn btn-primary">Verifica</button>
