@@ -2,7 +2,18 @@
 Prendere un paragrafo abbastanza lungo, contenente diverse frasi. Prendere il paragrafo e suddividerlo in tanti paragrafi <p>. Ogni punto un nuovo paragrafo. -->
 
 <?php
+// Get value from GET
+$paragraph = $_GET[trim('paragraph')] ?? '';
 
+// Paragraph flag
+$paragraph_flag = true;
+
+// Check if paragraph includes periods.
+if (str_contains($paragraph, '.')) {
+    $paragraph = explode('.', $paragraph);
+} else {
+    $paragraph_flag = false;
+}
 ?>
 
 <!-- HTML -->
