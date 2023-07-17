@@ -2,8 +2,10 @@
 Con un form passare come parametri GET name, mail e age e verificare (cercando i metodi che non conosciamo nella documentazione) che name sia più lungo di 3 caratteri, che mail contenga un punto e una chiocciola e che age sia un numero. Se tutto è ok stampare “Accesso riuscito”, altrimenti “Accesso negato” -->
 
 <?php
-
-
+// create variables from GET method
+$name = $_GET[trim('name')] ?? '';
+$email = $_GET[trim('email')] ?? '';
+$age = $_GET[trim('age')] ?? '';
 
 ?>
 
