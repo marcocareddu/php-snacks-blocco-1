@@ -38,7 +38,16 @@ $age_flag = ctype_digit($age);
             <h1>PHP SNACK - 2</h1>
             <div class="pt-3">
                 <div class="pt-3">
+
+                    <?php if ($name_flag && $email_flag && $age_flag) : ?>
+                        <h1 class="text-success mb-5">ACCESSO RIUSCITO</h1>
+                    <?php else : ?>
+                        <h1 class="text-danger mb-5">ACCESSO NEGATO</h1>
+                    <?php endif ?>
+
+
                     <h3 class="mb-5">Inserisci i dati richiesti per la verifica</h3>
+
 
                     <!-- Basic Form -->
                     <form>
