@@ -8,13 +8,15 @@ $paragraph = $_GET[trim('paragraph')] ?? '';
 // Paragraph flag
 $paragraph_flag = false;
 
+// Display class flag
+$d_none_class = '';
+
 // Check if paragraph includes periods.
 if (str_contains($paragraph, '.')) {
     $paragraph = explode('.', $paragraph);
     $paragraph_flag = true;
+    $d_none_class = 'd-none';
 }
-
-var_dump($paragraph)
 ?>
 
 <!-- HTML -->
@@ -39,21 +41,21 @@ var_dump($paragraph)
 
             <h1>PHP SNACK - Bonus</h1>
 
-
-            <div class="mb-3">
-
-                <!-- Check flag -->
-                <?php if ($paragraph_flag) : ?>
+            <!-- Check flag -->
+            <?php if ($paragraph_flag) : ?>
+                <div class="my-4">
+                    <h1>Risultato: </h1>
 
                     <!-- Print result in DOM  -->
                     <?php foreach ($paragraph as $phrase) : ?>
                         <p><?= $phrase ?></p>
                     <?php endforeach ?>
+                </div>
 
-                <?php endif ?>
-            </div>
+            <?php endif ?>
 
-            <div class="pt-3">
+            <!-- FORM - Hide after check -->
+            <div class="pt-3 <?= $d_none_class ?>">
                 <div class="pt-3">
 
                     <h3 class="mb-5">Inserisci il testo</h3>
