@@ -6,14 +6,15 @@ Prendere un paragrafo abbastanza lungo, contenente diverse frasi. Prendere il pa
 $paragraph = $_GET[trim('paragraph')] ?? '';
 
 // Paragraph flag
-$paragraph_flag = true;
+$paragraph_flag = false;
 
 // Check if paragraph includes periods.
 if (str_contains($paragraph, '.')) {
     $paragraph = explode('.', $paragraph);
-} else {
-    $paragraph_flag = false;
+    $paragraph_flag = true;
 }
+
+var_dump($paragraph)
 ?>
 
 <!-- HTML -->
@@ -29,7 +30,7 @@ if (str_contains($paragraph, '.')) {
 
     <!-- CSS -->
     <link rel="stylesheet" href="./css/style.css" type="text/css">
-    <title>PHP - Snack 2</title>
+    <title>PHP - Bonus</title>
 </head>
 
 <body>
@@ -37,12 +38,25 @@ if (str_contains($paragraph, '.')) {
         <div class="mt-3 text-center">
 
             <h1>PHP SNACK - Bonus</h1>
+
+
+            <div class="mb-3">
+
+                <!-- Check flag -->
+                <?php if ($paragraph_flag) : ?>
+
+                    <!-- Print result in DOM  -->
+                    <?php foreach ($paragraph as $phrase) : ?>
+                        <p><?= $phrase ?></p>
+                    <?php endforeach ?>
+
+                <?php endif ?>
+            </div>
+
             <div class="pt-3">
                 <div class="pt-3">
 
-
                     <h3 class="mb-5">Inserisci il testo</h3>
-
 
                     <!-- Basic Form -->
                     <form>
